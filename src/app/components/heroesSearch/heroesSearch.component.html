@@ -1,0 +1,28 @@
+<h1 class="animated fadeIn fast"> Héroes Filtrados<h1>
+<hr>
+
+<div class="row" *ngIf="heroesSearch.length ===0">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      No existen resultados con el termino: {{termino}}
+    </div>
+  </div>
+</div>
+
+
+<div class="card-columns" *ngIf="heroesSearch.length > 0">
+
+  <div class="card animated fadeIn fast" *ngFor="let hero of heroesSearch; let i=index">
+  <img class="card-img-top" src="{{hero.img}}" alt="Card image cap">
+    <div class="card-body">
+      <h3 class="card-title">{{hero.nombre}}</h3>
+      <h4 class="card-text">{{hero.bio}}.</h4>
+      <h4 class="card-text"><small class="text-muted">{{hero.aparicion}}</small></h4>
+
+      <button (click)="verHeroe(i)" type="button" class="btn btn-outline-primary btn-block">Ver más</button>
+      <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary btn-block">Ver más link</a>
+
+    </div>
+  </div>
+
+</div>
